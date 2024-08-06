@@ -2,9 +2,14 @@ import { useAuth } from "@/src/providers/AuthProvider";
 import { Link, router, Stack } from "expo-router";
 import { ChannelList } from "stream-chat-expo";
 import { FontAwesome5 } from "@expo/vector-icons";
+import { ActivityIndicator } from "react-native";
 
 export default function MainTabScreen() {
   const { user } = useAuth();
+
+  if (!user) {
+    return <ActivityIndicator />; // TODO: may be here we can redirect to login page
+  }
 
   return (
     <>
